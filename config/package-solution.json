@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-architecture-client-side-solution",
+    "id": "9f06df1d-4f0f-497b-a222-0b694241ad1e",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.19.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "spfx-architecture description"
+      },
+      "longDescription": {
+        "default": "spfx-architecture description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "spfx-architecture Feature",
+        "description": "The feature that activates elements of the spfx-architecture solution.",
+        "id": "cfda4647-ace3-4bc0-80c0-480fe1bb4530",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-architecture.sppkg"
+  }
+}
