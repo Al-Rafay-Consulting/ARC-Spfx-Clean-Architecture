@@ -1,15 +1,16 @@
 import * as React from 'react';
-import CaseCreate from './components/container/CustomerCreate';
+import CustomerCreate from './components/container/CustomerCreate';
 import { Route, Routes } from 'react-router-dom';
-import CaseListing from './components/container/CustomerListing';
+import CustomerListing from './components/container/CustomerListing';
 
 export default class CustomerManagement extends React.Component {
     public render() {
 
         return (
             <Routes>
-                <Route path="/create" element={<CaseCreate />} />
-                <Route path="/list" element={<CaseListing />} />
+                <Route path="/" element={<CustomerCreate />} />
+                <Route path="/create" element={<CustomerCreate />} />
+                <Route path="/list" element={<CustomerListing />} />
             </Routes>
         );
     }
