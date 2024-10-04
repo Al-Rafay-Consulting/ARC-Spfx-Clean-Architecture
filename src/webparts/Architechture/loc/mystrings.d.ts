@@ -1,4 +1,4 @@
-declare interface IMainArchitechtureWebPartStrings {
+declare interface IArchitechtureWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
@@ -13,7 +13,7 @@ declare interface IMainArchitechtureWebPartStrings {
   UnknownEnvironment: string;
 }
 
-declare module 'MainArchitechtureWebPartStrings' {
-  const strings: IMainArchitechtureWebPartStrings;
+declare module 'ArchitechtureWebPartStrings' {
+  const strings: IArchitechtureWebPartStrings;
   export = strings;
 }

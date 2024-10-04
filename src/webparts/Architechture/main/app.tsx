@@ -1,14 +1,12 @@
-import * as React from 'react';
-// import AppRouter from './config/router/AppRoutes';
+import * as  React from "react";
+import AppRoutes from "./config/router/AppRoutes";
 
-function MainArchitechture() {
+const MainArchitectureApp: React.FC = () => {
+    return (
+        <div>
+            <AppRoutes />
+        </div>
+    );
+};
 
-  return (
-    <>
-    <h1>HELLOW WORLD</h1>
-        {/* <AppRouter /> */}
-    </>
-  );
-}
-
-export default MainArchitechture;
+export default MainArchitectureApp;

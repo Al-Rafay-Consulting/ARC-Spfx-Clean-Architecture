@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "ed09366d-d069-423a-b9c3-3062a84dc3e6",
-  "alias": "MainArchitechtureWebPart",
+  "id": "d38dd21e-4482-4f55-ad13-e785d3978388",
+  "alias": "ArchitechtureWebPart",
   "componentType": "WebPart",
 
   "version": "*",
@@ -14,11 +14,11 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", 
     "group": { "default": "Advanced" },
-    "title": { "default": "MAIN ARCHITECHTURE" },
-    "description": { "default": "MAIN ARCHITECHTURE description" },
+    "title": { "default": "Architechture" },
+    "description": { "default": "Architechture description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "MAIN ARCHITECHTURE"
+      "description": "Architechture"
     }
   }]
 }

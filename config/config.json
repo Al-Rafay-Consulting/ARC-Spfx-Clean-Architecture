@@ -2,17 +2,17 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
   "version": "2.0",
   "bundles": {
-    "main-architechture-web-part": {
+    "architechture-web-part": {
       "components": [
         {
-          "entrypoint": "./lib/webparts/Architechture/MainArchitechtureWebPart.js",
-          "manifest": "./src/webparts/Architechture/MainArchitechtureWebPart.manifest.json"
+          "entrypoint": "./lib/webparts/architechture/ArchitechtureWebPart.js",
+          "manifest": "./src/webparts/architechture/ArchitechtureWebPart.manifest.json"
         }
       ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "MainArchitechtureWebPartStrings": "lib/webparts/mainArchitechture/loc/{locale}.js"
+    "ArchitechtureWebPartStrings": "lib/webparts/architechture/loc/{locale}.js"
   }
 }

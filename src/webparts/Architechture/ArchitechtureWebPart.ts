@@ -8,28 +8,28 @@ import {
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
-import * as strings from 'MainArchitechtureWebPartStrings';
-import MainArchitechture from './main/app';
+import * as strings from 'ArchitechtureWebPartStrings';
+import MainArchitectureApp from './main/app';
 
-export interface IMainArchitechtureWebPartProps {
+export interface IArchitechtureWebPartProps {
   description: string;
 }
 
-export default class MainArchitechtureWebPart extends BaseClientSideWebPart<IMainArchitechtureWebPartProps> {
+export default class ArchitechtureWebPart extends BaseClientSideWebPart<IArchitechtureWebPartProps> {
 
-  private _isDarkTheme: boolean = false;
-  private _environmentMessage: string = '';
+  // private _isDarkTheme: boolean = false;
+  // private _environmentMessage: string = '';
 
   public render(): void {
     const element: React.ReactElement = React.createElement(
-      MainArchitechture,
-      {
-        description: this.properties.description,
-        isDarkTheme: this._isDarkTheme,
-        environmentMessage: this._environmentMessage,
-        hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
-      }
+      MainArchitectureApp,
+      // {
+      //   description: this.properties.description,
+      //   isDarkTheme: this._isDarkTheme,
+      //   environmentMessage: this._environmentMessage,
+      //   hasTeamsContext: !!this.context.sdks.microsoftTeams,
+      //   userDisplayName: this.context.pageContext.user.displayName
+      // }
     );
 
     ReactDom.render(element, this.domElement);
@@ -37,7 +37,7 @@ export default class MainArchitechtureWebPart extends BaseClientSideWebPart<IMai
 
   protected onInit(): Promise<void> {
     return this._getEnvironmentMessage().then(message => {
-      this._environmentMessage = message;
+      // this._environmentMessage = message;
     });
   }
 
@@ -75,7 +75,7 @@ export default class MainArchitechtureWebPart extends BaseClientSideWebPart<IMai
       return;
     }
 
-    this._isDarkTheme = !!currentTheme.isInverted;
+    // this._isDarkTheme = !!currentTheme.isInverted;
     const {
       semanticColors
     } = currentTheme;
