@@ -8,7 +8,7 @@ import "@pnp/sp/lists";
 import "@pnp/sp/items";
 import "@pnp/sp/batching";
 
-var _sp: SPFI | null = null;
+let _sp: SPFI | null = null;
 
 export const getSP = (context?: WebPartContext): SPFI => {
   if (context != null) {

@@ -1,6 +1,9 @@
 import { SPFI } from "@pnp/sp";
 import { getSP } from "../../config/pnpJs/config";
 import ConfigService from "./config.service";
+import "@pnp/sp/webs";
+import "@pnp/sp/files";
+import "@pnp/sp/folders";
 
 
 class BasePnpService extends ConfigService {
@@ -23,7 +26,7 @@ class BasePnpService extends ConfigService {
 
     async getAll(ListName: string, ResponseKeys: string[]) {
         try {
-            const response: Object[] = await this._sp.web.lists.getByTitle(ListName).items.select(...ResponseKeys)()
+            const response: any = await this._sp.web.lists.getByTitle(ListName).items.select(...ResponseKeys)()
             return this.ResponseSuccess(response);
         }
         catch (error) {
@@ -34,7 +37,7 @@ class BasePnpService extends ConfigService {
 
     async getSingle(ListName: string, itemID: number, ResponseKeys: string[]) {
         try {
-            const response: Object = await this._sp.web.lists.getByTitle(ListName).items.getById(itemID).select(...ResponseKeys)()
+            const response: any = await this._sp.web.lists.getByTitle(ListName).items.getById(itemID).select(...ResponseKeys)()
             return this.ResponseSuccess(response);
         }
         catch (error) {
@@ -43,9 +46,9 @@ class BasePnpService extends ConfigService {
         }
     }
 
-    async create(ListName: string, payload: Object) {
+    async create(ListName: string, payload: any) {
         try {
-            const response: Object = await this._sp.web.lists.getByTitle(ListName).items.add(payload)
+            const response: any = await this._sp.web.lists.getByTitle(ListName).items.add(payload)
             return this.ResponseSuccess(response);
         }
         catch (error) {
@@ -54,10 +57,10 @@ class BasePnpService extends ConfigService {
         }
     }
 
-    async update(ListName: string, itemID: number,  payload: Object) {
+    async update(ListName: string, itemID: number, payload: any) {
         try {
             const dataList = await this._sp.web.lists.getByTitle(ListName)
-            const response: Object = await dataList.items.getById(itemID).update(payload);
+            const response: any = await dataList.items.getById(itemID).update(payload);
             return this.ResponseSuccess(response);
         }
         catch (error) {
@@ -77,7 +80,39 @@ class BasePnpService extends ConfigService {
             return this.ResponseError(error.message, error)
         }
     }
-    
+
+    async createFile(file: File, libraryName: string) {
+        try {
+
+            if (file.size <= 10485760) {
+                //small upload
+                const result = await this._sp.web.getFolderByServerRelativePath(libraryName).files.addUsingPath(file.name, file, { Overwrite: true })
+                return this.ResponseSuccess(result)
+            }
+            else {
+                //large upload
+                const result = await this._sp.web.getFolderByServerRelativePath(libraryName).files.addChunked(file.name, file,
+                    {
+                        progress: data => { console.log(`Upload progress: ${data.stage}`); },
+                        Overwrite: true
+                    })
+                    return this.ResponseSuccess(result)
+            }
+        } catch (error) {
+            return this.ResponseError(error.message,error)
+        }
+    }
+    async getFile(fileUrl:string){
+        try{
+            const file = await this._sp.web.getFileByServerRelativePath(fileUrl)
+            const fileContent = await file.getBuffer()
+            this.ResponseSuccess(fileContent)
+            console.log('Successfully fetch the file',fileContent)
+        }
+        catch(error){
+            this.ResponseError(error.message,error)
+        }
+    }
 }
 
 export default BasePnpService;

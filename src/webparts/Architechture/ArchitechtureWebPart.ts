@@ -10,6 +10,7 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 import * as strings from 'ArchitechtureWebPartStrings';
 import MainArchitectureApp from './main/app';
+import { getSP } from './main/config/pnpJs/config';
 
 export interface IArchitechtureWebPartProps {
   description: string;
@@ -35,12 +36,14 @@ export default class ArchitechtureWebPart extends BaseClientSideWebPart<IArchite
     ReactDom.render(element, this.domElement);
   }
 
-  protected onInit(): Promise<void> {
+  protected  async onInit(): Promise<void> {
+    await super.onInit();
+    getSP(this.context)
+
     return this._getEnvironmentMessage().then(message => {
       // this._environmentMessage = message;
     });
   }
-
 
 
   private _getEnvironmentMessage(): Promise<string> {

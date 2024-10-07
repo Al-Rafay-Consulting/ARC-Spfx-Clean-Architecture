@@ -9,6 +9,8 @@ function NavBar() {
       <Link to={"/case-management/list"} >Case Tracking</Link>+-+
       <Link to={"/case-management/create"} >Create Event</Link>+-+
       <Link to={"/case-management/create"} >Event Tracking</Link>+-+
+      <Link to={"/fileUploader"}>Create File</Link>+-+
+     
     </div>
   );
 }
