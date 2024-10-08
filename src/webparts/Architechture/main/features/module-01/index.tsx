@@ -6,7 +6,6 @@ import FileUploader from './components/presentation/fileUploader';
 
 export default class CustomerManagement extends React.Component {
     public render() {
-
         return (
             <Routes>
                 {/* <Route path="/" element={<CustomerCreate />} /> */}
