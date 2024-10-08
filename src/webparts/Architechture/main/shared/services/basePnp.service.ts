@@ -62,7 +62,7 @@ class BasePnpService extends ConfigService {
             const dataList = await this._sp.web.lists.getByTitle(ListName)
             const response: any = await dataList.items.getById(itemID).update(payload);
             return this.ResponseSuccess(response);
-        }
+        } 
         catch (error) {
             console.error("Pnp Error=> update=> ", error);
             return this.ResponseError(error.message, error)
@@ -83,21 +83,20 @@ class BasePnpService extends ConfigService {
 
     async createFile(file: File, libraryName: string) {
         try {
-
+            let result;
             if (file.size <= 10485760) {
                 //small upload
-                const result = await this._sp.web.getFolderByServerRelativePath(libraryName).files.addUsingPath(file.name, file, { Overwrite: true })
-                return this.ResponseSuccess(result)
+                result = await this._sp.web.getFolderByServerRelativePath(libraryName).files.addUsingPath(file.name, file, { Overwrite: true })
             }
             else {
                 //large upload
-                const result = await this._sp.web.getFolderByServerRelativePath(libraryName).files.addChunked(file.name, file,
+                result = await this._sp.web.getFolderByServerRelativePath(libraryName).files.addChunked(file.name, file,
                     {
                         progress: data => { console.log(`Upload progress: ${data.stage}`); },
                         Overwrite: true
                     })
-                    return this.ResponseSuccess(result)
-            }
+                }
+                return this.ResponseSuccess(result)
         } catch (error) {
             return this.ResponseError(error.message,error)
         }
@@ -111,6 +110,16 @@ class BasePnpService extends ConfigService {
         }
         catch(error){
             this.ResponseError(error.message,error)
+        }
+    }
+    async getByFilter(ListName: string, filter: string, pageSize: number, ResponseKeys: string[]) {
+        try {
+            const response: any = await this._sp.web.lists.getByTitle(ListName).items.top(pageSize || 1).filter(filter).select(...ResponseKeys)()
+            return this.ResponseSuccess(response);
+        }
+        catch (error) {
+            console.error("Pnp Error=> getAll=> ", error);
+            return this.ResponseError(error.message, error)
         }
     }
 }

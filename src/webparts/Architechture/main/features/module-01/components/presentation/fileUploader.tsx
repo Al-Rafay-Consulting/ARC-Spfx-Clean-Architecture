@@ -3,23 +3,23 @@
 import * as React from "react";
 import BasePnpService from "../../../../shared/services/basePnp.service";
 import { PrimaryButton } from "@fluentui/react";
+import { MODULE_ENUMS } from "../../utils/enum";
 
 const FileUploader = () => {
 
+  const libName = MODULE_ENUMS.SP
   const handleFetch = async () => {
     const service = BasePnpService.getPersistentInstance();
     const file = "/sites/Testing/PracticeLib/image2.jpeg";
-    const response = await service.getFile(file);
-    console.log(response);
+    await service.getFile(file);
+   
   };
 
   const handleUpload = async (event: any) => {
     const files = event.target.files;
-    const libraryName = "/sites/Testing/PracticeLib";
     const service = BasePnpService.getPersistentInstance();
-    const response = await service.createFile(files[0], libraryName);
-    console.log(files, "TEST FILE RAW OBJ");
-    console.log(response);
+    await service.createFile(files[0], libName.LIB_NAME);
+   
   };
 
   return (
