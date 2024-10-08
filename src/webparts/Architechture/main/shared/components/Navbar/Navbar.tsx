@@ -10,6 +10,7 @@ function NavBar() {
       <Link to={"/case-management/create"} >Create Event</Link>+-+
       <Link to={"/case-management/create"} >Event Tracking</Link>+-+
       <Link to={"/fileUploader"}>Create File</Link>+-+
+      <Link to={"/CustomerCreate"}>Create Customer</Link>+-+
      
     </div>
   );
