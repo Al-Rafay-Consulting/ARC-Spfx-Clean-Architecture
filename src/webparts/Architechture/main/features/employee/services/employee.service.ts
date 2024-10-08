@@ -3,7 +3,7 @@ import { ICreatePayload } from "../interfaces/IService";
 import { MODULE_ENUMS } from "../utils/enum";
 
 
-class ModuleService {
+class EmployeeService {
 
     private _listName: string = MODULE_ENUMS.SP.LIST_NAME
     private basePnpService: BasePnpService;
@@ -28,4 +28,4 @@ class ModuleService {
     }
 }
 
-export default ModuleService;
+export default EmployeeService ;

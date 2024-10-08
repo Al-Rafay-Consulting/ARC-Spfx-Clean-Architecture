@@ -5,10 +5,11 @@ function NavBar() {
 
   return (
     <div>
+      <Link to={"/"} >Home</Link>+-+
       <Link to={"/case-management/create"} >Create Case</Link>+-+
       <Link to={"/case-management/list"} >Case Tracking</Link>+-+
-      <Link to={"/case-management/create"} >Create Event</Link>+-+
-      <Link to={"/case-management/create"} >Event Tracking</Link>+-+
+      <Link to={"/employee/registration"} >Create Employee</Link>+-+
+      <Link to={"/employee/list"} >Emlpoyees List</Link>+-+
     </div>
   );
 }
