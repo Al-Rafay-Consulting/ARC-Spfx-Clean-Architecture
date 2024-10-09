@@ -4,6 +4,7 @@ import NavBar from '../../shared/components/Navbar/Navbar';
 import CustomerManagement from '../../features/module-01';
 import CustomerManagement2 from '../../features/module-02';
 import FileUploader from '../../features/module-01/components/presentation/fileUploader';
+import CustomerCreate from '../../features/module-01/components/container/CustomerCreate';
 
 function AppRoutes() {
 
@@ -15,7 +16,9 @@ function AppRoutes() {
                     <Route path="/module-01/*" element={<CustomerManagement />} />
                     <Route path="/module-02/*" element={<CustomerManagement2 />} />
                     <Route path='/fileUploader' element={<FileUploader/>}/>
-                </Routes>
+                    <Route path='/CustomerCreate' element={<CustomerCreate/>}/>
+ 
+               </Routes>
         </HashRouter>
     );
 }

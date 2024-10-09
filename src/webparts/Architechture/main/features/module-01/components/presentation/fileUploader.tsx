@@ -19,7 +19,6 @@ const FileUploader = () => {
     const files = event.target.files;
     const service = BasePnpService.getPersistentInstance();
     await service.createFile(files[0], libName.LIB_NAME);
-   
   };
 
   return (
