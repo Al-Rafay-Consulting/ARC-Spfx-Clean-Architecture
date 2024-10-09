@@ -5,7 +5,7 @@ import { IEmployeeProps } from "../../interfaces/IEmployeeProps";
 import { useAppDispatch } from "../../../../config/hooks/reduxHook";
 import { registerEmployee } from "../../store";
 import * as dayjs from "dayjs";
-// import BasePnpService from "../../../../shared/services/basePnp.service";
+import { useNavigate } from "react-router-dom";
 
 const { TextArea } = Input;
 
@@ -18,18 +18,25 @@ const normFile = (e: any) => {
 
 const EmployeeRegistration: React.FC = () => {
   const dispatch = useAppDispatch();
-  const submitHandler: FormProps<IEmployeeProps>["onFinish"] = (values) => {
+  const navigate = useNavigate();
+  const submitHandler: FormProps<IEmployeeProps>["onFinish"] = async (
+    values
+  ) => {
     values.DOB = dayjs(values.DOB).toISOString();
-    dispatch(registerEmployee(values));
+    const response = await dispatch(registerEmployee(values));
+    if (response !== undefined) {
+      navigate("/employee/list");
+    }
   };
 
   return (
     <>
+      <h1>Employee Registration</h1>
       <Form
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
-        style={{ maxWidth: 600 }}
+        style={{ maxWidth: 800 }}
         onFinish={submitHandler}
       >
         <Form.Item
@@ -85,7 +92,7 @@ const EmployeeRegistration: React.FC = () => {
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
-            Button
+            Submit
           </Button>
         </Form.Item>
       </Form>

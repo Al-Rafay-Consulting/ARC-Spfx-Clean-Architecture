@@ -95,7 +95,6 @@ class BasePnpService extends ConfigService {
         { Overwrite: true }
       );
 
-      console.log(fileUploadResult);
       return this.ResponseSuccess(fileUploadResult);
     } catch (error: any) {
       console.error("Error uploading file:", error);
