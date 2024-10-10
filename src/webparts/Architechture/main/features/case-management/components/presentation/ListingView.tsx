@@ -1,10 +1,9 @@
 import type { TableProps } from "antd";
 import { Avatar, Table, UploadFile } from "antd";
 import * as dayjs from "dayjs";
-import { GoDotFill } from "react-icons/go";
-import { CiCalendar } from "react-icons/ci";
 import * as React from "react";
-import BasePnpService from "../../../../shared/services/basePnp.service";
+import { CiCalendar } from "react-icons/ci";
+import { GoDotFill } from "react-icons/go";
 
 interface DataType {
   ID: string;
@@ -121,20 +120,7 @@ const columns: TableProps<DataType>["columns"] = [
   },
 ];
 
-const EmployeeView: React.FC = () => {
-  const [cases, setCases] = React.useState([]);
-  const pnpService = BasePnpService.getPersistentInstance();
-
-  React.useEffect(() => {
-    (async () => {
-      const response: any = await pnpService.getAll("Cases", ["*"]);
-      console.log(response);
-      if (response) {
-        setCases(response?.data);
-      }
-    })();
-  }, []);
-
+const EmployeeView: React.FC<any> = ({ cases }) => {
   return <Table<DataType> columns={columns} dataSource={cases ? cases : []} />;
 };
 
