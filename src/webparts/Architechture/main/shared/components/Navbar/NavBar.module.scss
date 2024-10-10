@@ -1,0 +1,70 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #315b81;
+  width: 100%;
+}
+
+.menuIcon {
+  background-color: #003768;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.menuIcon svg {
+  color: white;
+  font-size: 25px;
+}
+
+.navItems {
+  display: flex;
+  gap: 10px;
+}
+
+.navItems a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.navItems .navItem {
+  padding-right: 10px;
+  border-right: 1px solid #ffffff3d;
+}
+
+.navItems .navItem:last-child {
+  padding-right: 0;
+  border-right: none;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: fit-content;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.icons {
+  padding: 15px 10px;
+}
+
+.icons svg {
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.profile {
+  padding-right: 10px !important;
+}
