@@ -1,7 +1,7 @@
 import { Form, Input } from "antd";
 import { SizeType } from "antd/es/config-provider/SizeContext";
 import { Rule } from "antd/es/form";
-import * as  React from "react";
+import * as React from "react";
 interface OnChangeHandler {
   (event: React.ChangeEvent<HTMLInputElement>): void;
 }
@@ -32,23 +32,25 @@ const TextInputField: React.FC<InputFieldProps> = ({
   border = true,
   maxLength,
   disabled,
-  onChange }) => {
+  onChange,
+}) => {
   return (
     <Form.Item
       name={name}
       label={label && <div style={{ fontWeight: "600" }}>{label}</div>}
-      rules={validationRules}
-    >
-      {<Input
-        onChange={onChange}
-        disabled={disabled}
-        maxLength={maxLength}
-        placeholder={placeholder}
-        prefix={prefix}
-        suffix={suffix}
-        size={size}
-        style={customStyle}
-        bordered={border} />
+      rules={validationRules}>
+      {
+        <Input
+          onChange={onChange}
+          disabled={disabled}
+          maxLength={maxLength}
+          placeholder={placeholder}
+          prefix={prefix}
+          suffix={suffix}
+          size={size}
+          style={customStyle}
+          bordered={border}
+        />
       }
     </Form.Item>
   );

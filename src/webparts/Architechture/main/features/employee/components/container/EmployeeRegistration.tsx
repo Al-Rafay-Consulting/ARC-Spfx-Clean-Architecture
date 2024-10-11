@@ -37,20 +37,17 @@ const EmployeeRegistration: React.FC = () => {
         wrapperCol={{ span: 14 }}
         layout="horizontal"
         style={{ maxWidth: 800 }}
-        onFinish={submitHandler}
-      >
+        onFinish={submitHandler}>
         <Form.Item
           label="Name"
           name="Name"
-          rules={[{ required: true, message: "Please input your username!" }]}
-        >
+          rules={[{ required: true, message: "Please input your username!" }]}>
           <Input />
         </Form.Item>
         <Form.Item
           label="Email"
           name="Email"
-          rules={[{ required: true, message: "Please input your email!" }]}
-        >
+          rules={[{ required: true, message: "Please input your email!" }]}>
           <Input />
         </Form.Item>
 
@@ -59,8 +56,7 @@ const EmployeeRegistration: React.FC = () => {
           name="DOB"
           rules={[
             { required: true, message: "Please input your date of birth!" },
-          ]}
-        >
+          ]}>
           <DatePicker />
         </Form.Item>
 
@@ -69,8 +65,7 @@ const EmployeeRegistration: React.FC = () => {
           name="Description"
           rules={[
             { required: true, message: "Please input your description!" },
-          ]}
-        >
+          ]}>
           <TextArea rows={4} />
         </Form.Item>
 
@@ -81,8 +76,7 @@ const EmployeeRegistration: React.FC = () => {
           getValueFromEvent={normFile}
           rules={[
             { required: true, message: "Please input your profile picture!" },
-          ]}
-        >
+          ]}>
           <Upload listType="picture-card" maxCount={1}>
             <button style={{ border: 0, background: "none" }} type="button">
               <PlusOutlined />
