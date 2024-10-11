@@ -7,7 +7,7 @@ const registerEmployeeHandler = async (formData: IEmployeeProps) => {
   const basePnpService = BasePnpService.getPersistentInstance();
   if (Array.isArray(formData?.Image)) {
     for (let img of formData?.Image) {
-      const response: any = await basePnpService.uploadFile(
+      const response: any = await basePnpService.createFile(
         img?.originFileObj,
         "Employees Documents"
       );

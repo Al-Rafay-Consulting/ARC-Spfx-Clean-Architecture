@@ -35,11 +35,11 @@ export default class ArchitechtureWebPart extends BaseClientSideWebPart<IArchite
     ReactDom.render(element, this.domElement);
   }
 
-  protected  async onInit(): Promise<void> {
+  protected async onInit(): Promise<void> {
     await super.onInit();
-    getSP(this.context)
+    getSP(this.context);
 
-    return this._getEnvironmentMessage().then(message => {
+    return this._getEnvironmentMessage().then((message) => {
       // this._environmentMessage = message;
     });
   }

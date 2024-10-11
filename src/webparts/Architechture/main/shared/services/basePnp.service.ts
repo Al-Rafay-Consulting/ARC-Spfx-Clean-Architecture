@@ -1,7 +1,10 @@
+import { SPFI } from "@pnp/sp";
+import "@pnp/sp/files";
+import "@pnp/sp/folders";
+import "@pnp/sp/webs";
 import { getSP } from "../../config/pnpJs/config";
 import ConfigService from "./config.service";
-import { SPFI } from "@pnp/sp";
-import { IFolder } from "@pnp/sp/folders"; // For folder operations
+
 class BasePnpService extends ConfigService {
   private _sp: SPFI;
   private static basePnpService: BasePnpService;
@@ -81,24 +84,56 @@ class BasePnpService extends ConfigService {
     }
   }
 
-  async uploadFile(file: File, libraryName: string) {
+  async createFile(file: File, libraryName: string) {
     try {
-      console.log(file, libraryName, "from basePnp");
-      // Get the folder by its server-relative path
-      const libraryRootFolder: IFolder =
-        await this._sp.web.getFolderByServerRelativePath(libraryName);
-
-      // Upload the file using addUsingPath
-      const fileUploadResult = await libraryRootFolder.files.addUsingPath(
-        file.name,
-        file,
-        { Overwrite: true }
-      );
-
-      return this.ResponseSuccess(fileUploadResult);
-    } catch (error: any) {
-      console.error("Error uploading file:", error);
-      return this.ResponseError("File upload failed", error);
+      let result;
+      if (file.size <= 10485760) {
+        //small upload
+        result = await this._sp.web
+          .getFolderByServerRelativePath(libraryName)
+          .files.addUsingPath(file.name, file, { Overwrite: true });
+      } else {
+        //large upload
+        result = await this._sp.web
+          .getFolderByServerRelativePath(libraryName)
+          .files.addChunked(file.name, file, {
+            progress: (data) => {
+              console.log(`Upload progress: ${data.stage}`);
+            },
+            Overwrite: true,
+          });
+      }
+      return this.ResponseSuccess(result);
+    } catch (error) {
+      return this.ResponseError(error.message, error);
+    }
+  }
+  async getFile(fileUrl: string) {
+    try {
+      const file = await this._sp.web.getFileByServerRelativePath(fileUrl);
+      const fileContent = await file.getBuffer();
+      this.ResponseSuccess(fileContent);
+      console.log("Successfully fetch the file", fileContent);
+    } catch (error) {
+      this.ResponseError(error.message, error);
+    }
+  }
+  async getByFilter(
+    ListName: string,
+    filter: string,
+    pageSize: number,
+    ResponseKeys: string[]
+  ) {
+    try {
+      const response: any = await this._sp.web.lists
+        .getByTitle(ListName)
+        .items.top(pageSize || 1)
+        .filter(filter)
+        .select(...ResponseKeys)();
+      return this.ResponseSuccess(response);
+    } catch (error) {
+      console.error("Pnp Error=> getAll=> ", error);
+      return this.ResponseError(error.message, error);
     }
   }
 }
