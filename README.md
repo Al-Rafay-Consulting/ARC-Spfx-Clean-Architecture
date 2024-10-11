@@ -1,3 +1,12 @@
+# Prettier Setup
+## Install the Prettier Extension
+- Search for "Prettier - Code formatter" and install the extension by Prettier.
+## Set Prettier as the Default Formatter:
+- Open your settings by going to File > Preferences > Settings or pressing Ctrl + ,
+- In the search bar, type "default formatter" and select Prettier - Code Formatter as the default formatter.
+## Enable Format on Save:
+- In the VSCode settings, search for format on save and enable the option "Editor: Format On Save"
+
 # spfx-architecture
 
 ## Summary
