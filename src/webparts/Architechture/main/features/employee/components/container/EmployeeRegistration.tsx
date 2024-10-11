@@ -1,11 +1,11 @@
-import { PlusOutlined } from "@ant-design/icons";
-import { Button, DatePicker, Form, FormProps, Input, Upload } from "antd";
-import * as React from "react";
-import { IEmployeeProps } from "../../interfaces/IEmployeeProps";
-import { useAppDispatch } from "../../../../config/hooks/reduxHook";
-import { registerEmployee } from "../../store";
-import * as dayjs from "dayjs";
-import { useNavigate } from "react-router-dom";
+import { PlusOutlined } from '@ant-design/icons';
+import { Button, DatePicker, Form, FormProps, Input, Upload } from 'antd'
+import * as React from 'react';
+import { IEmployeeProps } from '../../interfaces/IEmployeeProps';
+import { useAppDispatch } from '../../../../config/hooks/reduxHook';
+import { registerEmployee } from '../../store';
+import * as dayjs from 'dayjs';
+import { useNavigate } from 'react-router-dom';
 
 const { TextArea } = Input;
 
@@ -19,13 +19,13 @@ const normFile = (e: any) => {
 const EmployeeRegistration: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const submitHandler: FormProps<IEmployeeProps>["onFinish"] = async (
-    values
+  const submitHandler: FormProps<IEmployeeProps>['onFinish'] = async (
+    values: IEmployeeProps
   ) => {
     values.DOB = dayjs(values.DOB).toISOString();
     const response = await dispatch(registerEmployee(values));
     if (response !== undefined) {
-      navigate("/employee/list");
+      navigate('/employee/list');
     }
   };
 
@@ -41,13 +41,13 @@ const EmployeeRegistration: React.FC = () => {
         <Form.Item
           label="Name"
           name="Name"
-          rules={[{ required: true, message: "Please input your username!" }]}>
+          rules={[{ required: true, message: 'Please input your username!' }]}>
           <Input />
         </Form.Item>
         <Form.Item
           label="Email"
           name="Email"
-          rules={[{ required: true, message: "Please input your email!" }]}>
+          rules={[{ required: true, message: 'Please input your email!' }]}>
           <Input />
         </Form.Item>
 
@@ -55,7 +55,7 @@ const EmployeeRegistration: React.FC = () => {
           label="Date Of Birth"
           name="DOB"
           rules={[
-            { required: true, message: "Please input your date of birth!" },
+            { required: true, message: 'Please input your date of birth!' },
           ]}>
           <DatePicker />
         </Form.Item>
@@ -64,7 +64,7 @@ const EmployeeRegistration: React.FC = () => {
           label="Description"
           name="Description"
           rules={[
-            { required: true, message: "Please input your description!" },
+            { required: true, message: 'Please input your description!' },
           ]}>
           <TextArea rows={4} />
         </Form.Item>
@@ -75,10 +75,10 @@ const EmployeeRegistration: React.FC = () => {
           name="Image"
           getValueFromEvent={normFile}
           rules={[
-            { required: true, message: "Please input your profile picture!" },
+            { required: true, message: 'Please input your profile picture!' },
           ]}>
           <Upload listType="picture-card" maxCount={1}>
-            <button style={{ border: 0, background: "none" }} type="button">
+            <button style={{ border: 0, background: 'none' }} type="button">
               <PlusOutlined />
               <div style={{ marginTop: 8 }}>Upload</div>
             </button>

@@ -1,9 +1,9 @@
-import { SPFI } from "@pnp/sp";
-import "@pnp/sp/files";
-import "@pnp/sp/folders";
-import "@pnp/sp/webs";
-import { getSP } from "../../config/pnpJs/config";
-import ConfigService from "./config.service";
+import { SPFI } from '@pnp/sp';
+import '@pnp/sp/files';
+import '@pnp/sp/folders';
+import '@pnp/sp/webs';
+import { getSP } from '../../config/pnpJs/config';
+import ConfigService from './config.service';
 
 class BasePnpService extends ConfigService {
   private _sp: SPFI;
@@ -30,7 +30,7 @@ class BasePnpService extends ConfigService {
         .items.select(...ResponseKeys)();
       return this.ResponseSuccess(response);
     } catch (error) {
-      console.error("Pnp Error=> getAll=> ", error);
+      console.error('Pnp Error=> getAll=> ', error);
       return this.ResponseError(error.message, error);
     }
   }
@@ -43,7 +43,7 @@ class BasePnpService extends ConfigService {
         .select(...ResponseKeys)();
       return this.ResponseSuccess(response);
     } catch (error) {
-      console.error("Pnp Error=> getSingle=> ", error);
+      console.error('Pnp Error=> getSingle=> ', error);
       return this.ResponseError(error.message, error);
     }
   }
@@ -55,7 +55,7 @@ class BasePnpService extends ConfigService {
         .items.add(payload);
       return this.ResponseSuccess(response);
     } catch (error) {
-      console.error("Pnp Error=> create=> ", error);
+      console.error('Pnp Error=> create=> ', error);
       return this.ResponseError(error.message, error);
     }
   }
@@ -68,7 +68,7 @@ class BasePnpService extends ConfigService {
         .update(payload);
       return this.ResponseSuccess(response);
     } catch (error) {
-      console.error("Pnp Error=> update=> ", error);
+      console.error('Pnp Error=> update=> ', error);
       return this.ResponseError(error.message, error);
     }
   }
@@ -79,7 +79,7 @@ class BasePnpService extends ConfigService {
       const response = await dataList.items.getById(itemID).delete();
       return this.ResponseSuccess(response);
     } catch (error) {
-      console.error("Pnp Error=> delete=> ", error);
+      console.error('Pnp Error=> delete=> ', error);
       return this.ResponseError(error.message, error);
     }
   }
@@ -113,7 +113,7 @@ class BasePnpService extends ConfigService {
       const file = await this._sp.web.getFileByServerRelativePath(fileUrl);
       const fileContent = await file.getBuffer();
       this.ResponseSuccess(fileContent);
-      console.log("Successfully fetch the file", fileContent);
+      console.log('Successfully fetch the file', fileContent);
     } catch (error) {
       this.ResponseError(error.message, error);
     }
@@ -132,7 +132,7 @@ class BasePnpService extends ConfigService {
         .select(...ResponseKeys)();
       return this.ResponseSuccess(response);
     } catch (error) {
-      console.error("Pnp Error=> getAll=> ", error);
+      console.error('Pnp Error=> getAll=> ', error);
       return this.ResponseError(error.message, error);
     }
   }

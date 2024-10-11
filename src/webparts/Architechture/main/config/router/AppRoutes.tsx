@@ -4,6 +4,7 @@ import EmployeeManagement from "../../features/employee";
 import CustomerManagement from "../../features/module-01";
 import FileUploader from "../../features/module-01/components/presentation/fileUploader";
 import NavBar from "../../shared/components/Navbar/Navbar";
+import CustomCalendar from "../../shared/components/CustomCalendar/CustomCalendar";
 
 function AppRoutes() {
   return (
@@ -14,6 +15,7 @@ function AppRoutes() {
         <Route path="/module-01/*" element={<CustomerManagement />} />
         <Route path="/employee/*" element={<EmployeeManagement />} />
         <Route path="/fileUploader" element={<FileUploader />} />
+        <Route path="/CustomCalendar" element={<CustomCalendar/>}/>
       </Routes>
     </HashRouter>
   );
