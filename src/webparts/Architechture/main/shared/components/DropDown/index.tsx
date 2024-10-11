@@ -3,60 +3,44 @@ import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Dropdown, Space } from "antd";
 
-const items: MenuProps["items"] = [
+interface iDropDownProps {
+  title: string;
+  className?: string;
+  items?: MenuProps["items"];
+}
+
+// Default dropdown items
+const defaultItems: MenuProps["items"] = [
   {
     key: "1",
     label: (
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="https://www.antgroup.com"
+        href="https://www.example.com"
       >
-        1st menu item
+        Default menu item 1
       </a>
     ),
   },
   {
     key: "2",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.aliyun.com"
-      >
-        2nd menu item (disabled)
-      </a>
-    ),
+    label: "Default menu item 2",
     icon: <SmileOutlined />,
-    disabled: true,
   },
   {
     key: "3",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.luohanacademy.com"
-      >
-        3rd menu item (disabled)
-      </a>
-    ),
-    disabled: true,
-  },
-  {
-    key: "4",
     danger: true,
-    label: "a danger item",
+    label: "Danger item",
   },
 ];
 
-interface iDropDownProps {
-  title: string;
-  className?: string;
-}
-
-const DropDown: React.FC<iDropDownProps> = ({ title, className }) => (
-  <Dropdown menu={{ items }} className={className && className}>
+const DropDown: React.FC<iDropDownProps> = ({
+  title,
+  className,
+  items = defaultItems,
+}) => (
+  <Dropdown menu={{ items }} className={className}>
     <a onClick={(e) => e.preventDefault()}>
       <Space>
         {title}

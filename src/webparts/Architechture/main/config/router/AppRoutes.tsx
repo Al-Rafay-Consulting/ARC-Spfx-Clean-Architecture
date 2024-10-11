@@ -11,10 +11,24 @@ function AppRoutes() {
     <HashRouter>
       <NavBar />
       <Routes>
-        {/* <Route path="/" element={<CustomerManagement />} /> */}
-        <Route path="/module-01/*" element={<CustomerManagement />} />
+        <Route
+          path="/"
+          element={
+            <div
+              style={{
+                height: "50vh",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <h1 style={{ textAlign: "center" }}>
+                Welcome to ARC SPFx Clean Architecture
+              </h1>
+            </div>
+          }
+        />
         <Route path="/employee/*" element={<EmployeeManagement />} />
-
         <Route path="/case-management/*" element={<CaseManagement />} />
         <Route path="/module-01/*" element={<CustomerManagement />} />
         <Route path="/fileUploader" element={<FileUploader />} />
