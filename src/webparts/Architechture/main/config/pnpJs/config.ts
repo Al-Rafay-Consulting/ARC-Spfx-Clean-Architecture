@@ -1,6 +1,6 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import "@pnp/sp/webs"; 
-import "@pnp/sp/files"; 
+import "@pnp/sp/webs";
+import "@pnp/sp/files";
 import "@pnp/sp/folders";
 // import pnp and pnp logging system
 import { spfi, SPFI, SPFx } from "@pnp/sp";

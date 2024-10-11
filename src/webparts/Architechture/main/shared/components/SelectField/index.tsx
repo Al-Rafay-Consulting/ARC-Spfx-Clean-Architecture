@@ -1,6 +1,6 @@
 import { Form, Select } from "antd";
 import { Rule } from "antd/es/form";
-import * as  React from "react";
+import * as React from "react";
 
 interface IDataItem {
   key: string;
@@ -26,14 +26,12 @@ const SelectField: React.FC<ISelectFieldProps> = ({
       <Form.Item
         label={<div style={{ fontWeight: "600" }}>{label}</div>}
         name={name}
-        rules={validationRules}
-      >
+        rules={validationRules}>
         <Select
           placeholder={placeholder}
           showSearch
           optionFilterProp="children"
-          style={{ width: "100%" }}
-        >
+          style={{ width: "100%" }}>
           {dataList &&
             dataList.map((item: IDataItem) => (
               <Option value={item.key} key={item.key}>

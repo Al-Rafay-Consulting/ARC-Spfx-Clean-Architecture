@@ -13,7 +13,7 @@ declare interface IArchitechtureWebPartStrings {
   UnknownEnvironment: string;
 }
 
-declare module 'ArchitechtureWebPartStrings' {
+declare module "ArchitechtureWebPartStrings" {
   const strings: IArchitechtureWebPartStrings;
   export = strings;
 }
