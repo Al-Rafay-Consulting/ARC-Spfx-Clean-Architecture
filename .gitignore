@@ -21,6 +21,9 @@ coverage
 # OSX
 .DS_Store
 
+package-lock.json
+
+
 # Visual Studio files
 .ntvs_analysis.dat
 .vs
