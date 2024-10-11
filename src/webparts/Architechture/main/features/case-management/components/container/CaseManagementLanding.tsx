@@ -28,24 +28,12 @@ const formFields: IFormField[] = [
 
 export default function CaseManagementLanding() {
   const [dbCases, setDbCases] = React.useState([]);
-  const [, /*cases*/ setCases] = React.useState([]);
+  const [cases, setCases] = React.useState([]);
   const [filterValues, setFilterValues] = React.useState<FilterValues>({});
   const pnpService = BasePnpService.getPersistentInstance();
   const [open, setOpen] = React.useState(false);
 
-  React.useEffect(() => {
-    (async () => {
-      const response = await pnpService.getAll("Cases", ["*"]);
-      if (response.data) {
-        console.log(response?.data, "pnp");
-        setDbCases(response?.data);
-        setCases(response?.data);
-      }
-    })();
-  }, []);
-
-  React.useEffect(() => {
-    console.log(filterValues, "filter values");
+  const filterCases = () => {
     if (Object.keys(filterValues).length === 0) {
       setCases(dbCases);
     }
@@ -87,8 +75,23 @@ export default function CaseManagementLanding() {
       });
     });
 
-    console.log(filtered, "filtered cases");
     setCases(filtered);
+  };
+
+  const getCases = async () => {
+    const response = await pnpService.getAll("Cases", ["*"]);
+    if (response.data) {
+      setDbCases(response?.data);
+      setCases(response?.data);
+    }
+  };
+
+  React.useEffect(() => {
+    getCases();
+  }, []);
+
+  React.useEffect(() => {
+    filterCases();
   }, [filterValues]);
 
   return (
@@ -103,7 +106,7 @@ export default function CaseManagementLanding() {
             <span>Filter</span>
           </div>
         </div>
-        <TableStructure />
+        <TableStructure dataSource={cases} />
       </div>
       <FilterDrawer
         open={open}

@@ -16,7 +16,7 @@ function NavBar() {
           <HiMenu />
         </div>
         <div className={classes.navItem}>
-          <Link className={classes.navLink} to={"/case-management/list"}>
+          <Link className={classes.navLink} to={"/case-management"}>
             <FaPlus />
             <span>Create Case</span>
           </Link>
