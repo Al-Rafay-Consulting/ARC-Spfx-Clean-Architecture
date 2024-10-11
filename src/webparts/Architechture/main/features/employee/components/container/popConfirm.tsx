@@ -28,8 +28,7 @@ const PopConfirm: React.FC<IPopConfirm> = ({
     onConfirm={() => confirm(onConfirm)}
     onCancel={cancel}
     okText="Yes"
-    cancelText="No"
-  >
+    cancelText="No">
     <Button danger>Delete</Button>
   </Popconfirm>
 );

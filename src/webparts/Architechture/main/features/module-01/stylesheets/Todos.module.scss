@@ -1,4 +1,4 @@
-@import '~@fluentui/react/dist/sass/References.scss';
+@import "~@fluentui/react/dist/sass/References.scss";
 
 $primary-color: #0078d4; // Primary button color
 $hover-color: lighten($primary-color, 10%); // Hover effect for buttons
@@ -9,7 +9,7 @@ $border-color: #ccc; // Border color for inputs and todos
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px; 
+  gap: 20px;
   padding: 20px;
 
   &.teams {
@@ -19,13 +19,13 @@ $border-color: #ccc; // Border color for inputs and todos
 
 .todos {
   overflow: hidden;
-  padding: 1.5em; 
+  padding: 1.5em;
   color: var(--bodyText);
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  gap: 15px; 
+  gap: 15px;
   min-width: 300px;
 
   // Added a subtle shadow for a lifted look

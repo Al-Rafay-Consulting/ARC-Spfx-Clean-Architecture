@@ -6,10 +6,10 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       parser: '@typescript-eslint/parser',
-      'parserOptions': {
-        'project': './tsconfig.json',
-        'ecmaVersion': 2018,
-        'sourceType': 'module'
+      parserOptions: {
+        project: './tsconfig.json',
+        ecmaVersion: 2018,
+        sourceType: 'module',
       },
       rules: {
         // Prevent usage of the JavaScript null value, while allowing code to access existing APIs that may require null. https://www.npmjs.com/package/@rushstack/eslint-plugin
@@ -29,10 +29,10 @@ module.exports = {
         '@typescript-eslint/explicit-function-return-type': [
           1,
           {
-            'allowExpressions': true,
-            'allowTypedFunctionExpressions': true,
-            'allowHigherOrderFunctions': false
-          }
+            allowExpressions: true,
+            allowTypedFunctionExpressions: true,
+            allowHigherOrderFunctions: false,
+          },
         ],
         // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
         // Rationale to disable: although this is a recommended rule, it is up to dev to select coding style.
@@ -72,9 +72,9 @@ module.exports = {
         '@typescript-eslint/no-namespace': [
           1,
           {
-            'allowDeclarations': false,
-            'allowDefinitionFiles': false
-          }
+            allowDeclarations: false,
+            allowDefinitionFiles: false,
+          },
         ],
         // RATIONALE:         Parameter properties provide a shorthand such as "constructor(public title: string)"
         //                    that avoids the effort of declaring "title" as a field.  This TypeScript feature makes
@@ -93,23 +93,23 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': [
           1,
           {
-            'vars': 'all',
+            vars: 'all',
             // Unused function arguments often indicate a mistake in JavaScript code.  However in TypeScript code,
             // the compiler catches most of those mistakes, and unused arguments are fairly common for type signatures
             // that are overriding a base class method or implementing an interface.
-            'args': 'none'
-          }
+            args: 'none',
+          },
         ],
         // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
         '@typescript-eslint/no-use-before-define': [
           2,
           {
-            'functions': false,
-            'classes': true,
-            'variables': true,
-            'enums': true,
-            'typedefs': true
-          }
+            functions: false,
+            classes: true,
+            variables: true,
+            enums: true,
+            typedefs: true,
+          },
         ],
         // Disallows require statements except in import statements.
         // In other words, the use of forms such as var foo = require("foo") are banned. Instead use ES6 style imports or import foo = require("foo") imports.
@@ -131,11 +131,11 @@ module.exports = {
         'dot-notation': [
           1,
           {
-            'allowPattern': '^_'
-          }
+            allowPattern: '^_',
+          },
         ],
         // RATIONALE:         Catches code that is likely to be incorrect
-        'eqeqeq': 1,
+        eqeqeq: 1,
         // STANDARDIZED BY:   eslint\conf\eslint-recommended.js
         'for-direction': 1,
         // RATIONALE:         Catches a common coding mistake.
@@ -274,10 +274,7 @@ module.exports = {
         // STANDARDIZED BY:   eslint\conf\eslint-recommended.js
         'require-yield': 1,
         // "Use strict" is redundant when using the TypeScript compiler.
-        'strict': [
-          2,
-          'never'
-        ],
+        strict: [2, 'never'],
         // RATIONALE:         Catches code that is likely to be incorrect
         // STANDARDIZED BY:   eslint\conf\eslint-recommended.js
         'use-isnan': 2,
@@ -290,8 +287,8 @@ module.exports = {
         // ====================================================================
         '@microsoft/spfx/import-requires-chunk-name': 1,
         '@microsoft/spfx/no-require-ensure': 2,
-        '@microsoft/spfx/pair-react-dom-render-unmount': 1
-      }
+        '@microsoft/spfx/pair-react-dom-render-unmount': 1,
+      },
     },
     {
       // For unit tests, we can be a little bit less strict.  The settings below revise the
@@ -311,9 +308,9 @@ module.exports = {
 
         // Microsoft convention
         '**/test/*.ts',
-        '**/test/*.tsx'
+        '**/test/*.tsx',
       ],
-      rules: {}
-    }
-  ]
+      rules: {},
+    },
+  ],
 };

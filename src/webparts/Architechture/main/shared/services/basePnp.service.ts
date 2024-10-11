@@ -25,7 +25,7 @@ class BasePnpService extends ConfigService {
 
   async getAll(ListName: string, ResponseKeys: string[]) {
     try {
-      const response: Object[] = await this._sp.web.lists
+      const response: any = await this._sp.web.lists
         .getByTitle(ListName)
         .items.select(...ResponseKeys)();
       return this.ResponseSuccess(response);
@@ -37,7 +37,7 @@ class BasePnpService extends ConfigService {
 
   async getSingle(ListName: string, itemID: number, ResponseKeys: string[]) {
     try {
-      const response: Object = await this._sp.web.lists
+      const response: any = await this._sp.web.lists
         .getByTitle(ListName)
         .items.getById(itemID)
         .select(...ResponseKeys)();
@@ -48,9 +48,9 @@ class BasePnpService extends ConfigService {
     }
   }
 
-  async create(ListName: string, payload: Object) {
+  async create(ListName: string, payload: any) {
     try {
-      const response: Object = await this._sp.web.lists
+      const response: any = await this._sp.web.lists
         .getByTitle(ListName)
         .items.add(payload);
       return this.ResponseSuccess(response);
@@ -60,10 +60,10 @@ class BasePnpService extends ConfigService {
     }
   }
 
-  async update(ListName: string, itemID: number, payload: Object) {
+  async update(ListName: string, itemID: number, payload: any) {
     try {
       const dataList = await this._sp.web.lists.getByTitle(ListName);
-      const response: Object = await dataList.items
+      const response: any = await dataList.items
         .getById(itemID)
         .update(payload);
       return this.ResponseSuccess(response);

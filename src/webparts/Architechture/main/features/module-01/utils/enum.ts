@@ -1,10 +1,9 @@
 export const MODULE_ENUMS = {
-    SP: {
-        LIST_NAME: "REL-LT-CASES",
-        LIB_NAME:"PracticeLib",
-        COLUMS: {
-            ALL: "*",
-        }
-    }
-
-}
+  SP: {
+    LIST_NAME: "REL-LT-CASES",
+    LIB_NAME: "PracticeLib",
+    COLUMS: {
+      ALL: "*",
+    },
+  },
+};

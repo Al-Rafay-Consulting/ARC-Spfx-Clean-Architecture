@@ -1,7 +1,10 @@
 import * as React from "react";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import { useAppDispatch, useAppSelector } from "../../../../config/hooks/reduxHook";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../../config/hooks/reduxHook";
 import { addTodo, deleteTodo, todoSelector } from "../../store";
 import classes from "../../stylesheets/Todos.module.scss";
 const Todos: React.FC = () => {
@@ -9,34 +12,31 @@ const Todos: React.FC = () => {
   const [todos, setTodos] = React.useState<string[]>([]);
   const [editIndex, setEditIndex] = React.useState<number>(-1);
 
-  const selectedTodos  = useAppSelector(todoSelector);
+  const selectedTodos = useAppSelector(todoSelector);
   const dispatch = useAppDispatch();
 
   React.useEffect(() => {
     setTodos(selectedTodos);
-  }, [selectedTodos])
-
+  }, [selectedTodos]);
 
   const addTodoHandler = (): void => {
     if (!todo) return;
     if (editIndex !== -1) {
-      const newList = todos?.map((t, i) => (i === editIndex ? todo : t))
+      const newList = todos?.map((t, i) => (i === editIndex ? todo : t));
       setTodos(newList);
-      dispatch(addTodo(newList))
+      dispatch(addTodo(newList));
       setEditIndex(-1);
     } else {
       dispatch(addTodo([...todos, todo]));
       setTodos([...todos, todo]);
     }
     setTodo("");
-
   };
-  
 
-  const deleteHandler = (deleteItemIndex : any ) =>{
-    setTodos(todos?.filter((_, index) => index !== deleteItemIndex))
-    dispatch(deleteTodo(deleteItemIndex))
-  }
+  const deleteHandler = (deleteItemIndex: any) => {
+    setTodos(todos?.filter((_, index) => index !== deleteItemIndex));
+    dispatch(deleteTodo(deleteItemIndex));
+  };
   return (
     <div className={classes.container}>
       <h1>Todo App</h1>
@@ -64,9 +64,7 @@ const Todos: React.FC = () => {
                   setEditIndex(i);
                 }}
               />
-              <MdDelete
-                onClick={()=>deleteHandler(i)  }
-              />
+              <MdDelete onClick={() => deleteHandler(i)} />
             </div>
           </div>
         ))}

@@ -18,18 +18,14 @@
     display: flex;
     gap: 20px;
   }
-
 }
 
 // TODO: MEDIA QUERIS STARTS
 @media (max-width: 768px) {
   .create_case_form {
-      padding: 5px 10px;
-      
-    
-    }   
+    padding: 5px 10px;
+  }
 }
-
 
 // TODO: EXTRA CLASSED FROM OLD CODEBASE
 
@@ -43,27 +39,26 @@
 
 .fileTitle {
   &:hover {
-    color: #00549F;
+    color: #00549f;
     font-weight: 600;
   }
 }
 
-  .container {
-    padding: 0 40px;
-  }
-  
-  .headerInvoive {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
- 
-  }
-  // .ant-row {
-  //   margin-left: 0 !important;
-  //   margin-right: 0 !important;
-  // }
-  
-  // .ant-col {
-  //   padding-left: 8px;
-  //   padding-right: 8px;
-  // }
+.container {
+  padding: 0 40px;
+}
+
+.headerInvoive {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+// .ant-row {
+//   margin-left: 0 !important;
+//   margin-right: 0 !important;
+// }
+
+// .ant-col {
+//   padding-left: 8px;
+//   padding-right: 8px;
+// }
