@@ -1,5 +1,5 @@
 import type { TableProps } from "antd";
-import { Space, Table, UploadFile } from "antd";
+import { Space, UploadFile } from "antd";
 import * as dayjs from "dayjs";
 import * as React from "react";
 import { imageURL } from "../../../../config/constants/constants";
@@ -7,8 +7,9 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "../../../../config/hooks/reduxHook";
+import TableStructure from "../../../../shared/components/TableStructure";
 import { deleteRegisteredEmployee, getRegisteredEmployees } from "../../store";
-import PopConfirm from "../container/popConfirm";
+import PopConfirm from "../../../../shared/components/PopConfirm";
 
 interface DataType {
   ID: string;
@@ -82,12 +83,7 @@ const EmployeeView: React.FC = () => {
     dispatch(getRegisteredEmployees());
   }, []);
 
-  return (
-    <Table<DataType>
-      columns={columns}
-      dataSource={employees ? employees : []}
-    />
-  );
+  return <TableStructure columns={columns} dataSource={employees} />;
 };
 
 export default EmployeeView;

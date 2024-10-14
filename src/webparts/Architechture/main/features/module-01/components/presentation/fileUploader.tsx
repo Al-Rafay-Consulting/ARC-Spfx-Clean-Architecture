@@ -9,7 +9,7 @@ const FileUploader = () => {
   const libName = MODULE_ENUMS.SP;
   const handleFetch = async () => {
     const service = BasePnpService.getPersistentInstance();
-    const file = "/sites/Testing/PracticeLib/image2.jpeg";
+    const file = "/sites/kabir/PracticeLib/image2.jpg";
     await service.getFile(file);
   };
 
