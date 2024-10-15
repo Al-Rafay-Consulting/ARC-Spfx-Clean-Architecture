@@ -1,17 +1,39 @@
-import * as React from "react";
-import CustomerCreate from "./components/container/CustomerCreate";
-import { Route, Routes } from "react-router-dom";
-import CustomerListing from "./components/container/CustomerListing";
-import FileUploader from "./components/presentation/fileUploader";
+import * as React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { ProtectedRoute } from '../../config/constants/protectedRoutes';
+import NotFound from '../../shared/components/NotFound';
+import { module01ModuleRoutes } from './router/routes';
 
-export default class CustomerManagement extends React.Component {
+export default class EmployeeManagement extends React.Component {
   public render() {
     return (
       <Routes>
-        {/* <Route path="/" element={<CustomerCreate />} /> */}
-        <Route path="/create" element={<CustomerCreate />} />
-        <Route path="/list" element={<CustomerListing />} />
-        <Route path="/fileUploader" element={<FileUploader />} />
+        {module01ModuleRoutes?.map(
+          ({
+            route,
+            module,
+            subModule,
+            privacyType,
+            isPermitted,
+            element: Element,
+          }) => (
+            <Route
+              key={route}
+              path={route}
+              element={
+                <ProtectedRoute
+                  privacyType={privacyType}
+                  isPermitted={isPermitted}
+                  subModule={subModule}
+                  module={module}>
+                  <Element />
+                </ProtectedRoute>
+              }
+            />
+          )
+        )}
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     );
   }
