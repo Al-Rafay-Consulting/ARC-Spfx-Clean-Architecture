@@ -1,37 +1,40 @@
-import * as React from "react";
-import { HashRouter, Route, Routes } from "react-router-dom";
-import CaseManagement from "../../features/case-management";
-import EmployeeManagement from "../../features/employee";
-import CustomerManagement from "../../features/module-01";
-import FileUploader from "../../features/module-01/components/presentation/fileUploader";
-import NavBar from "../../shared/components/Navbar/Navbar";
+import * as React from 'react';
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import NavBar from '../../shared/components/Navbar/Navbar';
+import NotFound from '../../shared/components/NotFound';
+import { appRoutes } from './routes';
+import { ProtectedRoute } from '../constants/protectedRoutes';
 
 function AppRoutes() {
   return (
     <HashRouter>
       <NavBar />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <div
-              style={{
-                height: "50vh",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <h1 style={{ textAlign: "center" }}>
-                Welcome to ARC SPFx Clean Architecture
-              </h1>
-            </div>
-          }
-        />
-        <Route path="/employee/*" element={<EmployeeManagement />} />
-        <Route path="/case-management/*" element={<CaseManagement />} />
-        <Route path="/module-01/*" element={<CustomerManagement />} />
-        <Route path="/fileUploader" element={<FileUploader />} />
+        {appRoutes?.map(
+          ({
+            route,
+            module,
+            isParent,
+            privacyType,
+            isPermitted,
+            element: Element,
+          }) => (
+            <Route
+              key={route}
+              path={`${route}${isParent ? '/*' : ''}`}
+              element={
+                <ProtectedRoute
+                  privacyType={privacyType}
+                  isPermitted={isPermitted}
+                  module={module}>
+                  <Element />
+                </ProtectedRoute>
+              }
+            />
+          )
+        )}
+        <Route path="/not-found" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </HashRouter>
   );
